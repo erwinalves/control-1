@@ -1156,9 +1156,16 @@ int main(int argc, char* argv[]){
 	//imprimir Ruta
 	if (cont>1)
 	{
-		for(int k=0;k<cont;k++)
+		for(int k=1;k<cont;k++)
 		{
-			cout<<Ruta[k]<<" - ";
+			if (k<cont)
+			{
+				cout<<Ruta[k-1]<<" - ";
+			}
+			if (k==cont-1)
+			{
+				cout<<Ruta[k]<<endl;
+			}
 		}
 		cout<<endl;
 	}
