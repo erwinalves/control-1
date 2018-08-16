@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <fstream>
 #include <iostream>
-#include <vector>
+#include <stdlib.h>
+#include <string> 
 
 using namespace std;
 
@@ -13,16 +14,6 @@ struct Estacion {
    string combiOrigen;
    string combiDestino;
 };
-
-void imprimirVector(Estacion vector[]){
-	for(i=0;i<vector.length();i++){
-		if(i==vector.length()-1){
-			cout<<vector[i].nombre<<endl;
-		}
-		else
-			cout<<vector[i]<<" - ";
-	}
-}
 
 int main(int argc, char* argv[]){
 	
@@ -222,7 +213,6 @@ int main(int argc, char* argv[]){
 	Linea1[26].combi = false;
 	Linea1[26].combiOrigen = "";
 	Linea1[26].combiDestino = "";
-
 	
 	// llenado Linea 2
 	Linea2[0].codigo = "LC";
@@ -378,7 +368,6 @@ int main(int argc, char* argv[]){
 	Linea2[21].combi = false;
 	Linea2[21].combiOrigen = "";
 	Linea2[21].combiDestino = "";
-
 	
 	// llenado Linea 4 
 	Linea4[0].codigo = "TOB";
@@ -541,8 +530,7 @@ int main(int argc, char* argv[]){
 	Linea4[22].combi = false;
 	Linea4[22].combiOrigen = "";
 	Linea4[22].combiDestino = "";
-
-
+	
 	// llenado Linea 4a
 	Linea4a[0].codigo = "VIM";
 	Linea4a[0].nombre = "Vicuña Makena";
@@ -586,7 +574,77 @@ int main(int argc, char* argv[]){
 	Linea4a[5].combiOrigen = "L4a";
 	Linea4a[5].combiDestino = "L2";
 	
+	//llenado linea 6
+	Linea6[0].codigo = "CER";
+	Linea6[0].nombre = "Cerrillos";
+	Linea6[0].linea = "L6";
+	Linea6[0].combi = false;
+	Linea6[0].combiOrigen = "";
+	Linea6[0].combiDestino = "";
 	
+	Linea6[1].codigo = "LVA";
+	Linea6[1].nombre = "Lo Valledor";
+	Linea6[1].linea = "L6";
+	Linea6[1].combi = false;
+	Linea6[1].combiOrigen = "";
+	Linea6[1].combiDestino = "";
+	
+	Linea6[2].codigo = "PAC";
+	Linea6[2].nombre = "Pedro Aguirre Cerda";
+	Linea6[2].linea = "L6";
+	Linea6[2].combi = false;
+	Linea6[2].combiOrigen = "";
+	Linea6[2].combiDestino = "";
+	
+	Linea6[3].codigo = "FRA";
+	Linea6[3].nombre = "Franklin";
+	Linea6[3].linea = "L6";
+	Linea6[3].combi = true;
+	Linea6[3].combiOrigen = "L6";
+	Linea6[3].combiDestino = "L2";
+	
+	Linea6[4].codigo = "BIO";
+	Linea6[4].nombre = "Bio Bio";
+	Linea6[4].linea = "L6";
+	Linea6[4].combi = false;
+	Linea6[4].combiOrigen = "";
+	Linea6[4].combiDestino = "";
+	
+	Linea6[5].codigo = "NUB";
+	Linea6[5].nombre = "Ñuble";
+	Linea6[5].linea = "L6";
+	Linea6[5].combi = true;
+	Linea6[5].combiOrigen = "L6";
+	Linea6[5].combiDestino = "L5";
+	
+	Linea6[6].codigo = "ESN";
+	Linea6[6].nombre = "Estadio Nacional";
+	Linea6[6].linea = "L6";
+	Linea6[6].combi = false;
+	Linea6[6].combiOrigen = "";
+	Linea6[6].combiDestino = "";
+	
+	Linea6[7].codigo = "NUO";
+	Linea6[7].nombre = "Ñuñoa";
+	Linea6[7].linea = "L6";
+	Linea6[7].combi = false;
+	Linea6[7].combiOrigen = "";
+	Linea6[7].combiDestino = "";
+	
+	Linea6[8].codigo = "ISU";
+	Linea6[8].nombre = "Ines de Suarez";
+	Linea6[8].linea = "L6";
+	Linea6[8].combi = false;
+	Linea6[8].combiOrigen = "";
+	Linea6[8].combiDestino = "";
+	
+	Linea6[9].codigo = "LEN";
+	Linea6[9].nombre = "Los Leones";
+	Linea6[9].linea = "L6";
+	Linea6[9].combi = true;
+	Linea6[9].combiOrigen = "L6";
+	Linea6[9].combiDestino = "L1";
+
 	//llenado linea 5
 	Linea5[0].codigo = "PM";
 	Linea5[0].nombre = "Plaza de Maipú";
@@ -797,111 +855,66 @@ int main(int argc, char* argv[]){
 	Linea5[29].combi = true;
 	Linea5[29].combiOrigen = "L5";
 	Linea5[29].combiDestino = "L4";
-
-
-	//llenado linea 6
-	Linea6[0].codigo = "CER";
-	Linea6[0].nombre = "Cerrillos";
-	Linea6[0].linea = "L6";
-	Linea6[0].combi = false;
-	Linea6[0].combiOrigen = "";
-	Linea6[0].combiDestino = "";
 	
-	Linea6[1].codigo = "LVA";
-	Linea6[1].nombre = "Lo Valledor";
-	Linea6[1].linea = "L6";
-	Linea6[1].combi = false;
-	Linea6[1].combiOrigen = "";
-	Linea6[1].combiDestino = "";
-	
-	Linea6[2].codigo = "PAC";
-	Linea6[2].nombre = "Pedro Aguirre Cerda";
-	Linea6[2].linea = "L6";
-	Linea6[2].combi = false;
-	Linea6[2].combiOrigen = "";
-	Linea6[2].combiDestino = "";
-	
-	Linea6[3].codigo = "FRA";
-	Linea6[3].nombre = "Franklin";
-	Linea6[3].linea = "L6";
-	Linea6[3].combi = true;
-	Linea6[3].combiOrigen = "L6";
-	Linea6[3].combiDestino = "L2";
-	
-	Linea6[4].codigo = "BIO";
-	Linea6[4].nombre = "Bio Bio";
-	Linea6[4].linea = "L6";
-	Linea6[4].combi = false;
-	Linea6[4].combiOrigen = "";
-	Linea6[4].combiDestino = "";
-	
-	Linea6[5].codigo = "NUB";
-	Linea6[5].nombre = "Ñuble";
-	Linea6[5].linea = "L6";
-	Linea6[5].combi = true;
-	Linea6[5].combiOrigen = "L6";
-	Linea6[5].combiDestino = "L5";
-	
-	Linea6[6].codigo = "ESN";
-	Linea6[6].nombre = "Estadio Nacional";
-	Linea6[6].linea = "L6";
-	Linea6[6].combi = false;
-	Linea6[6].combiOrigen = "";
-	Linea6[6].combiDestino = "";
-	
-	Linea6[7].codigo = "NUO";
-	Linea6[7].nombre = "Ñuñoa";
-	Linea6[7].linea = "L6";
-	Linea6[7].combi = false;
-	Linea6[7].combiOrigen = "";
-	Linea6[7].combiDestino = "";
-	
-	Linea6[8].codigo = "ISU";
-	Linea6[8].nombre = "Ines de Suarez";
-	Linea6[8].linea = "L6";
-	Linea6[8].combi = false;
-	Linea6[8].combiOrigen = "";
-	Linea6[8].combiDestino = "";
-	
-	Linea6[9].codigo = "LEN";
-	Linea6[9].nombre = "Los Leones";
-	Linea6[9].linea = "L6";
-	Linea6[9].combi = true;
-	Linea6[9].combiOrigen = "L6";
-	Linea6[9].combiDestino = "L1";
-
 	string origen;
 	string destino;
 	string l_origen;
 	string l_destino;
-	Estacion Ruta[100];
-	int cont=0, n_est;
+	string Ruta[100];
+	int cont=0, n_dest, n_orig, n_combi;
 	origen = argv[1];
 	destino = argv[2];
+	string aux;
 	for (int i=1;i<27;i++)
 	{
-		if (origen==Linea1[i].codigo){
+		if (origen==Linea1[i].codigo)
+		{
 			l_origen=Linea1[i].linea;
+			n_orig=i;
 		}
-		if (destino==Linea1[i].codigo){
+		if (destino==Linea1[i].codigo)
+		{
 			l_destino=Linea1[i].linea;
+			n_dest=i;
 		}
-		if (origen==Linea2[i].codigo){
+		if (origen==Linea2[i].codigo)
+		{
 			l_origen=Linea1[i].linea;
+			n_orig=i;
 		}
-		if (destino==Linea2[i].codigo){
+		if (destino==Linea2[i].codigo)
+		{
 			l_destino=Linea2[i].linea;
+			n_dest=i;
 		}
 	}
-	
-	if (l_origen=="L1"){
-		for (int j=1;j<27;j++){
-			
+	cout<<origen<<endl;
+	cout<<destino<<endl;
+	cout<<l_origen<<endl;
+	cout<<l_destino<<endl;
+	if (l_origen==l_destino)
+	{
+		if(n_orig<n_dest)
+		{
+			for(int j=n_orig;j=n_dest;j++)
+			{
+				aux="Linea"+l_origen.substr(1,2);
+				Ruta[j]=aux[j].nombre;
+			}
+		}
+		else
+		{
+			if (n_orig>n_dest)
+			{
+				for(int j=n_orig;j=n_dest;j--)
+				{
+					aux="Linea"+l_origen.substr(1,2);
+					Ruta[j]=aux[j].nombre;
+				}
+			}
 		}
 	}
-	if(argv[1]=="-v"){
-		cout<<"integrantes: Erwin Alves Silva - Alberto Vasquez Benavente"<<endl;
-	}
+
 return 0;
 }
 
