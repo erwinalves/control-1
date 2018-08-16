@@ -15,6 +15,16 @@ struct Estacion {
    string combiDestino;
 };
 
+void imprimirVector(Estacion vector[]){
+	for(i=0;i<vector.length();i++){
+		if(i==vector.length()-1){
+			cout<<vector[i].nombre<<endl;
+		}
+		else
+			cout<<vector[i]<<" - ";
+	}
+}
+
 int main(int argc, char* argv[]){
 	
 	Estacion Linea1 [27];
@@ -862,59 +872,53 @@ int main(int argc, char* argv[]){
 	string l_destino;
 	string Ruta[100];
 	int cont=0, n_dest, n_orig, n_combi;
-	origen = argv[1];
-	destino = argv[2];
-	string aux;
-	for (int i=1;i<27;i++)
-	{
-		if (origen==Linea1[i].codigo)
-		{
-			l_origen=Linea1[i].linea;
-			n_orig=i;
-		}
-		if (destino==Linea1[i].codigo)
-		{
-			l_destino=Linea1[i].linea;
-			n_dest=i;
-		}
-		if (origen==Linea2[i].codigo)
-		{
-			l_origen=Linea1[i].linea;
-			n_orig=i;
-		}
-		if (destino==Linea2[i].codigo)
-		{
-			l_destino=Linea2[i].linea;
-			n_dest=i;
-		}
+	if(argv[1]=="-v"){
+		cout<<"integrantes: Erwin Alves Silva - Alberto Vasquez Benavente"<<endl;
 	}
-	cout<<origen<<endl;
-	cout<<destino<<endl;
-	cout<<l_origen<<endl;
-	cout<<l_destino<<endl;
-	if (l_origen==l_destino)
-	{
-		if(n_orig<n_dest)
-		{
-			for(int j=n_orig;j=n_dest;j++)
-			{
-				aux="Linea"+l_origen.substr(1,2);
-				Ruta[j]=aux[j].nombre;
+	else{
+		origen = argv[1];
+		destino = argv[2];
+		string aux;
+		for (int i=1;i<27;i++){
+			if (origen==Linea1[i].codigo){
+				l_origen=Linea1[i].linea;
+				n_orig=i;
+			}
+			if (destino==Linea1[i].codigo){
+				l_destino=Linea1[i].linea;
+				n_dest=i;
+			}
+			if (origen==Linea2[i].codigo){
+				l_origen=Linea1[i].linea;
+				n_orig=i;
+			}
+			if (destino==Linea2[i].codigo){
+				l_destino=Linea2[i].linea;
+				n_dest=i;
 			}
 		}
-		else
-		{
-			if (n_orig>n_dest)
-			{
-				for(int j=n_orig;j=n_dest;j--)
-				{
+		cout<<origen<<endl;
+		cout<<destino<<endl;
+		cout<<l_origen<<endl;
+		cout<<l_destino<<endl;
+		if (l_origen==l_destino){
+			if(n_orig<n_dest){
+				for(int j=n_orig;j=n_dest;j++){
 					aux="Linea"+l_origen.substr(1,2);
 					Ruta[j]=aux[j].nombre;
 				}
 			}
+			else{
+				if (n_orig>n_dest){
+					for(int j=n_orig;j=n_dest;j--){
+						aux="Linea"+l_origen.substr(1,2);
+						Ruta[j]=aux[j].nombre;
+					}
+				}
+			}
 		}
+		imprimirVector(Ruta);
 	}
-
 return 0;
 }
 
