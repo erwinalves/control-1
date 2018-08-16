@@ -15,7 +15,7 @@ struct Estacion {
    string combiDestino;
 };
 
-void imprimirVector(Estacion vector[]){
+/*void imprimirVector(Estacion vector[]){
 	for(i=0;i<vector.length();i++){
 		if(i==vector.length()-1){
 			cout<<vector[i].nombre<<endl;
@@ -23,7 +23,7 @@ void imprimirVector(Estacion vector[]){
 		else
 			cout<<vector[i]<<" - ";
 	}
-}
+}*/
 
 int main(int argc, char* argv[]){
 	
@@ -866,59 +866,307 @@ int main(int argc, char* argv[]){
 	Linea5[29].combiOrigen = "L5";
 	Linea5[29].combiDestino = "L4";
 	
+	string init;
 	string origen;
 	string destino;
 	string l_origen;
 	string l_destino;
 	string Ruta[100];
+	init = argv[1];
 	int cont=0, n_dest, n_orig, n_combi;
-	if(argv[1]=="-v"){
+	if(init=="-v"){
 		cout<<"integrantes: Erwin Alves Silva - Alberto Vasquez Benavente"<<endl;
 	}
-	else{
-		origen = argv[1];
-		destino = argv[2];
-		string aux;
-		for (int i=1;i<27;i++){
-			if (origen==Linea1[i].codigo){
-				l_origen=Linea1[i].linea;
-				n_orig=i;
-			}
-			if (destino==Linea1[i].codigo){
-				l_destino=Linea1[i].linea;
-				n_dest=i;
-			}
-			if (origen==Linea2[i].codigo){
-				l_origen=Linea1[i].linea;
-				n_orig=i;
-			}
-			if (destino==Linea2[i].codigo){
-				l_destino=Linea2[i].linea;
-				n_dest=i;
-			}
-		}
-		cout<<origen<<endl;
-		cout<<destino<<endl;
-		cout<<l_origen<<endl;
-		cout<<l_destino<<endl;
-		if (l_origen==l_destino){
-			if(n_orig<n_dest){
-				for(int j=n_orig;j=n_dest;j++){
-					aux="Linea"+l_origen.substr(1,2);
-					Ruta[j]=aux[j].nombre;
-				}
-			}
-			else{
-				if (n_orig>n_dest){
-					for(int j=n_orig;j=n_dest;j--){
-						aux="Linea"+l_origen.substr(1,2);
-						Ruta[j]=aux[j].nombre;
+	if(init=="-f")
+	{
+	origen = argv[2];
+	destino = argv[3];
+	string aux;
+	//verificar linea destino y linea origen
+	for(int i=0;i<=30;i++)
+	{
+	if (origen==Linea1[i].codigo)
+	{
+		l_origen=Linea1[i].linea;
+		n_orig=i;
+	}
+	if (destino==Linea1[i].codigo)
+	{
+		l_destino=Linea1[i].linea;
+		n_dest=i;
+	}
+	if (origen==Linea2[i].codigo)
+	{
+		l_origen=Linea2[i].linea;
+		n_orig=i;
+	}
+	if (destino==Linea2[i].codigo)
+	{
+		l_destino=Linea2[i].linea;
+		n_dest=i;
+	}
+	if (origen==Linea4[i].codigo)
+	{
+		l_origen=Linea4[i].linea;
+		n_orig=i;
+	}
+	if (destino==Linea4[i].codigo)
+	{
+		l_destino=Linea4[i].linea;
+		n_dest=i;
+	}
+	if (origen==Linea4a[i].codigo)
+	{
+		l_origen=Linea4a[i].linea;
+		n_orig=i;
+	}
+	if (destino==Linea4a[i].codigo)
+	{
+		l_destino=Linea4a[i].linea;
+		n_dest=i;
+	}
+	if (origen==Linea5[i].codigo)
+	{
+		l_origen=Linea5[i].linea;
+		n_orig=i;
+	}
+	if (destino==Linea5[i].codigo)
+	{
+		l_destino=Linea5[i].linea;
+		n_dest=i;
+	}
+	if (origen==Linea6[i].codigo)
+	{
+		l_origen=Linea6[i].linea;
+		n_orig=i;
+	}
+	if (destino==Linea6[i].codigo)
+	{
+		l_destino=Linea6[i].linea;
+		n_dest=i;
+	}
+	}
+	/*cout<<origen<<endl;
+	cout<<destino<<endl;
+	cout<<l_origen<<endl;
+	cout<<l_destino<<endl;
+	cout<<n_orig<<endl;
+	cout<<n_dest<<endl;*/
+	if (l_origen==l_destino)
+	{
+		if (l_origen=="L1")
+		{
+			if(n_orig<n_dest)
+			{
+				for(int j=0;j<=n_dest;j++)
+				{
+					if (j>=n_orig)
+					{
+						Ruta[cont]=Linea1[j].nombre;
+						cont++;
 					}
 				}
 			}
+			else
+			{
+				if (n_orig>n_dest)
+				{
+					//cout<<"si"<<endl;
+					for(int j=27;j>=n_dest;j--)
+					{	
+						if (j<=n_orig)
+						{
+							Ruta[cont]=Linea1[j].nombre;
+							cont++;
+						}
+					}
+				}
+				else
+				{
+					Ruta[cont]=Linea1[n_orig].nombre;
+				}
+			}	
 		}
-		imprimirVector(Ruta);
+		if (l_origen=="L2")
+		{
+			if(n_orig<n_dest)
+			{
+				for(int j=0;j<=n_dest;j++)
+				{
+					if (j>=n_orig)
+					{
+						Ruta[cont]=Linea2[j].nombre;
+						cont++;
+					}
+				}
+			}
+			else
+			{
+				if (n_orig>n_dest)
+				{
+					//cout<<"si"<<endl;
+					for(int j=22;j>=n_dest;j--)
+					{	
+						if (j<=n_orig)
+						{
+							Ruta[cont]=Linea2[j].nombre;
+							cont++;
+						}
+					}
+				}
+				else
+				{
+					Ruta[cont]=Linea2[n_orig].nombre;
+				}
+			}	
+		}
+		if (l_origen=="L4")
+		{
+			if(n_orig<n_dest)
+			{
+				for(int j=0;j<=n_dest;j++)
+				{
+					if (j>=n_orig)
+					{
+						Ruta[cont]=Linea4[j].nombre;
+						cont++;
+					}
+				}
+			}
+			else
+			{
+				if (n_orig>n_dest)
+				{
+					//cout<<"si"<<endl;
+					for(int j=23;j>=n_dest;j--)
+					{	
+						if (j<=n_orig)
+						{
+							Ruta[cont]=Linea4[j].nombre;
+							cont++;
+						}
+					}
+				}
+				else
+				{
+					Ruta[cont]=Linea4[n_orig].nombre;
+				}
+			}	
+		}
+		if (l_origen=="L4a")
+		{
+			if(n_orig<n_dest)
+			{
+				for(int j=0;j<=n_dest;j++)
+				{
+					if (j>=n_orig)
+					{
+						Ruta[cont]=Linea4a[j].nombre;
+						cont++;
+					}
+				}
+			}
+			else
+			{
+				if (n_orig>n_dest)
+				{
+					//cout<<"si"<<endl;
+					for(int j=6;j>=n_dest;j--)
+					{	
+						if (j<=n_orig)
+						{
+							Ruta[cont]=Linea4a[j].nombre;
+							cont++;
+						}
+					}
+				}
+				else
+				{
+					Ruta[cont]=Linea4a[n_orig].nombre;
+				}
+			}	
+		}
+		if (l_origen=="L5")
+		{
+			if(n_orig<n_dest)
+			{
+				for(int j=0;j<=n_dest;j++)
+				{
+					if (j>=n_orig)
+					{
+						Ruta[cont]=Linea5[j].nombre;
+						cont++;
+					}
+				}
+			}
+			else
+			{
+				if (n_orig>n_dest)
+				{
+					//cout<<"si"<<endl;
+					for(int j=30;j>=n_dest;j--)
+					{	
+						if (j<=n_orig)
+						{
+							Ruta[cont]=Linea5[j].nombre;
+							cont++;
+						}
+					}
+				}
+				else
+				{
+					Ruta[cont]=Linea5[n_orig].nombre;
+				}
+			}	
+		}
+		if (l_origen=="L6")
+		{
+			if(n_orig<n_dest)
+			{
+				for(int j=0;j<=n_dest;j++)
+				{
+					if (j>=n_orig)
+					{
+						Ruta[cont]=Linea6[j].nombre;
+						cont++;
+					}
+				}
+			}
+			else
+			{
+				if (n_orig>n_dest)
+				{
+					//cout<<"si"<<endl;
+					for(int j=10;j>=n_dest;j--)
+					{	
+						if (j<=n_orig)
+						{
+							Ruta[cont]=Linea6[j].nombre;
+							cont++;
+						}
+					}
+				}
+				else
+				{
+					Ruta[cont]=Linea6[n_orig].nombre;
+				}
+			}	
+		}
 	}
+	//imprimir Ruta
+	if (cont>1)
+	{
+		for(int k=0;k<cont;k++)
+		{
+			cout<<Ruta[k]<<" - ";
+		}
+		cout<<endl;
+	}
+	else
+	{
+		cout<<Ruta[cont]<<endl;
+	}
+}
 return 0;
 }
 
