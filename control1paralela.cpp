@@ -17,13 +17,30 @@ struct Estacion{
 };
 
 void largoMinimo(Estacion matriz[][51], int largo[][3], string origen, string destino){
+<<<<<<< HEAD
+	int auxi,auxj=100,auxk=100, cont;
+=======
 	int auxi,auxj,auxk=100, cont;
+>>>>>>> 9d134681f8a2bfd5f808725259171b68a8e475e6
 	for(int i=0;i<9;i++){
 		for(int j=0;j<51;j++){
 			if(matriz[i][j].codigo==origen){
 				auxi=i;
 				auxj=j;
 				for(int k=0;k<51;k++){
+<<<<<<< HEAD
+					if(matriz[auxi][k].codigo==destino){
+						auxk=k;
+					}
+				}
+				if(auxk==100){
+					auxj=100;
+				}
+			}
+		}
+		if(auxk!=100 && auxj < auxk){
+			largo[auxi][0] = (auxk+1) - auxj;
+=======
 					if(matriz[i][k].codigo==destino){
 						auxk=k;
 					}
@@ -32,14 +49,39 @@ void largoMinimo(Estacion matriz[][51], int largo[][3], string origen, string de
 		}
 		if(auxk!=100 && auxj < auxk){
 			largo[auxi][0] = auxk - auxj +1;
+>>>>>>> 9d134681f8a2bfd5f808725259171b68a8e475e6
 			largo[auxi][1] = auxj;
 			largo[auxi][2] = auxk;
 		}
 		else if(auxk!=100 && auxj > auxk){
+<<<<<<< HEAD
+			largo[auxi][0] = (auxj+1) - auxk;
+			largo[auxi][1] = auxj;
+			largo[auxi][2] = auxk;
+		}
+		auxj=100;
+		auxk=100;
+	}
+	for(int i=0;i<9;i++){
+		for(int j=0;j<3;j++){
+			cout<<"largo["<<i<<"]["<<j<<"]= "<<largo[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+}
+
+void vectorInvertido(Estacion vector[], int largo){
+	Estacion vectorAux[largo];
+	for(int j=0;j<largo;j++)
+		vectorAux[j]=vector[j];
+	for(int i=0;i<largo;i++){
+		vector[i]=vectorAux[(largo-1)-i];
+=======
 			largo[auxi][0] = auxj - auxk +1;
 			largo[auxi][1] = auxj;
 			largo[auxi][2] = auxk;
 		}
+>>>>>>> 9d134681f8a2bfd5f808725259171b68a8e475e6
 	}
 }
 
@@ -53,8 +95,24 @@ void caminoMinimo(Estacion matriz[][51], int largo[][3], Estacion camino[], int&
 		}
 	}
 	cout<<"aux: "<<aux<<endl;
+<<<<<<< HEAD
+	cout<<"auxi: "<<auxi<<endl;
+	Estacion caminoAux[aux];
+	if(largo[auxi][1]<largo[auxi][2]){
+		for(int j=0;j<aux;j++){
+			camino[j]=matriz[auxi][j];
+		}
+	}
+	else{
+		for(int j=aux;j>0;j--){
+			camino[j]=matriz[auxi][j];
+
+		}
+		vectorInvertido(camino,aux);
+=======
 	for(int j=0;j<aux;j++){
 		camino[j]=matriz[auxi][j];
+>>>>>>> 9d134681f8a2bfd5f808725259171b68a8e475e6
 	}
 }
 
@@ -902,12 +960,28 @@ int main(int argc, char* argv[]){
 	Linea5[28].combiOrigen = "";
 	Linea5[28].combiDestino = "";
 
+<<<<<<< HEAD
+	Linea5[29].codigo = "VVA";
+=======
 	Linea5[29].codigo = "VV";
+>>>>>>> 9d134681f8a2bfd5f808725259171b68a8e475e6
 	Linea5[29].nombre = "Vicente Valdes";
 	Linea5[29].linea = "L5";
 	Linea5[29].combi = true;
 	Linea5[29].combiOrigen = "L5";
 	Linea5[29].combiDestino = "L4";
+<<<<<<< HEAD
+
+	string cod = argv[1];
+	string origen = argv[2];
+	string destino = argv[3];
+	
+	if(cod=="-v"){
+		cout<<"integrantes: Erwin Alves Silva - Alberto Vasquez Benavente"<<endl;
+	}
+	else if((cod=="-f") && ((origen.length()>0) || (destino.length()>0))){
+		
+=======
 	
 	if(argv[1]=="-v"){
 		cout<<"integrantes: Erwin Alves Silva - Alberto Vasquez Benavente"<<endl;
@@ -915,6 +989,7 @@ int main(int argc, char* argv[]){
 	else {//if(argv[1]=="-f"){
 		string origen = argv[2];
 		string destino = argv[3];
+>>>>>>> 9d134681f8a2bfd5f808725259171b68a8e475e6
 		int largo[9][3],l;
 		Estacion camino[51];
 
