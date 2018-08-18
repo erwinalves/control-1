@@ -16,13 +16,24 @@ struct Estacion{
    string combiDestino;
 };
 
+void imprimirVector(Estacion vector[],int largo){
+	for(int i=0;i<largo;i++){
+		if(i==largo-1){
+			cout<<vector[i].nombre<<endl;
+		}
+		else
+			cout<<vector[i].nombre<<" - ";
+	}
+}
+
 void largoMinimo(Estacion matriz[][51], int largo[][3], string origen, string destino){
-	int auxi,auxj=100,auxk=100, cont;
+	int auxi,auxj=100,auxk=100;
 	for(int i=0;i<9;i++){
 		for(int j=0;j<51;j++){
-			if(matriz[i][j].codigo==origen){
+			if(matriz[i][j].codigo==origen && auxj==100){
 				auxi=i;
 				auxj=j;
+				
 				for(int k=0;k<51;k++){
 					if(matriz[auxi][k].codigo==destino){
 						auxk=k;
@@ -46,20 +57,15 @@ void largoMinimo(Estacion matriz[][51], int largo[][3], string origen, string de
 		auxj=100;
 		auxk=100;
 	}
-	for(int i=0;i<9;i++){
-		for(int j=0;j<3;j++){
-			cout<<"largo["<<i<<"]["<<j<<"]= "<<largo[i][j]<<" ";
-		}
-		cout<<endl;
-	}
 }
 
 void vectorInvertido(Estacion vector[], int largo){
-	Estacion vectorAux[largo];
-	for(int j=0;j<largo;j++)
-		vectorAux[j]=vector[j];
-	for(int i=0;i<largo;i++)
-		vector[i]=vectorAux[(largo-1)-i];
+	Estacion aux;
+	for(int i=0;i<largo/2;i++){
+		aux = vector[i];
+		vector[i]=vector[(largo-1)-i];
+		vector[(largo-1)-i]=aux;
+	}
 }
 
 void caminoMinimo(Estacion matriz[][51], int largo[][3], Estacion camino[], int& aux){
@@ -71,30 +77,18 @@ void caminoMinimo(Estacion matriz[][51], int largo[][3], Estacion camino[], int&
 			auxi=i;
 		}
 	}
-	cout<<"aux: "<<aux<<endl;
-	cout<<"auxi: "<<auxi<<endl;
 	Estacion caminoAux[aux];
 	if(largo[auxi][1]<largo[auxi][2]){
 		for(int j=0;j<aux;j++){
-			camino[j]=matriz[auxi][j];
+			camino[j]=matriz[auxi][largo[auxi][1]+j];
 		}
 	}
 	else{
-		for(int j=aux;j>0;j--){
-			camino[j]=matriz[auxi][j];
+		for(int j=aux;j>=0;j--){
+			camino[j]=matriz[auxi][largo[auxi][2]+j];
 
 		}
 		vectorInvertido(camino,aux);
-	}
-}
-
-void imprimirVector(Estacion vector[],int largo){
-	for(int i=0;i<largo;i++){
-		if(i==largo-1){
-			cout<<vector[i].nombre<<endl;
-		}
-		else
-			cout<<vector[i].nombre<<" - ";
 	}
 }
 
@@ -933,7 +927,6 @@ int main(int argc, char* argv[]){
 	Linea5[28].combiDestino = "";
 
 	Linea5[29].codigo = "VVA";
-	Linea5[29].codigo = "VV";
 	Linea5[29].nombre = "Vicente Valdes";
 	Linea5[29].linea = "L5";
 	Linea5[29].combi = true;
@@ -950,8 +943,6 @@ int main(int argc, char* argv[]){
 	}
 	else if((cod=="-f") && ((origen.length()>0) || (destino.length()>0))){
 	
-		string origen = argv[2];
-		string destino = argv[3];
 		int largo[9][3],l;
 		Estacion camino[51];
 
